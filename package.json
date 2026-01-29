@@ -9,7 +9,7 @@
     "lint": "eslint",
     "export": "next export",
     "clean": "rimraf out",
-    "deploy": "npm run clean && npm run build && npm run export && npx gh-pages -d out -b gh-pages -r https://Xavier227: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@github.com/Xavier227/my-app.git --dotfiles"
+    "deploy": "npm run clean && npm run build && npm run export && npx gh-pages -d out -b gh-pages -r https://github.com/Xavier227/my-app.git --dotfiles"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
