@@ -16,16 +16,17 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { FileIcon } from "lucide-react";
+import { FileIcon, SearchAlertIcon } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
+import { Search } from "lucide-react";
 
 export default function Page() {
   const [showMessage, setShowMessage] = useState(false);
 
   return (
-    <div className=" min-h-screen flex flex-col bg-gray-900 ">
+    <div className=" min-h-screen flex flex-col">
       <Toaster />
       <Menubar>
         <MenubarMenu>
@@ -46,7 +47,10 @@ export default function Page() {
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>Edit</MenubarTrigger>
+          <MenubarTrigger>
+            <Search />
+            Edit
+          </MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
               <MenubarItem>
@@ -64,7 +68,7 @@ export default function Page() {
       <main className="p-4 flex flex-col items-center text-white">
         <h1 className="text-2xl font-bold">Home Page</h1>
         <p>Welcome to the home page!</p>
-        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+        <Skeleton className="h-5 w-25 rounded-full" />
         <div className="grid grid-cols-3 place-items-center mt-5 gap-y-2 gap-x-10 ">
           <p>test1</p>
           <p>test2</p>
@@ -101,9 +105,7 @@ export default function Page() {
             Show Popup
           </Button>
           <Button
-            onClick={() =>
-              toast.info("Test toast", { position: "top-center" })
-            }
+            onClick={() => toast.info("Test toast", { position: "top-center" })}
             variant="outline"
             className="text-black"
           >
