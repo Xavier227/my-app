@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Toolbar from "@/components/Toolbar";
 import { Button } from "@/components/ui/button";
@@ -21,9 +21,45 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { Search } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Page() {
   const [showMessage, setShowMessage] = useState(false);
+  const boxRef = useRef(null);
+  const box2Ref = useRef(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      boxRef.current,
+      {
+        x: -200,
+      },
+      {
+        x: 200,
+        duration: 2,
+        //ease: "bounce",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.out",
+      },
+    );
+
+    gsap.fromTo(
+      box2Ref.current,
+      {
+        x: 200,
+      },
+      {
+        x: -200,
+        duration: 2,
+        //ease: "bounce",
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.out",
+      },
+    );
+  });
 
   return (
     <div className=" min-h-screen flex flex-col">
@@ -126,6 +162,14 @@ export default function Page() {
             </div>
           </div>
         )}
+        <div
+          ref={boxRef}
+          className="mt-5 w-24 h-24 bg-green-500 rounded-full"
+        ></div>
+        <div
+          ref={box2Ref}
+          className="mt-5 w-24 h-24 bg-red-500 rounded-full"
+        ></div>
       </main>
     </div>
   );
